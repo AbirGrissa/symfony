@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Abscencee index{% endblock %}
+
+{% block body %}
+    <h1>Abscencee index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Senace</th>
+                <th>Date</th>
+                <th>Module</th>
+                <th>Excuse</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for abscencee in abscencees %}
+            <tr>
+                <td>{{ abscencee.id }}</td>
+                <td>{{ abscencee.senace }}</td>
+                <td>{{ abscencee.date ? abscencee.date|date('Y-m-d') : '' }}</td>
+                <td>{{ abscencee.module }}</td>
+                <td>{{ abscencee.excuse }}</td>
+                <td>
+                    <a href="{{ path('app_abscencee_show', {'id': abscencee.id}) }}">show</a>
+                    <a href="{{ path('app_abscencee_edit', {'id': abscencee.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_abscencee_new') }}">Create new</a>
+{% endblock %}

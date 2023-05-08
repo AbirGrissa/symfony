@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Abscencee{% endblock %}
+
+{% block body %}
+    <h1>Abscencee</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ abscencee.id }}</td>
+            </tr>
+            <tr>
+                <th>Senace</th>
+                <td>{{ abscencee.senace }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ abscencee.date ? abscencee.date|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Module</th>
+                <td>{{ abscencee.module }}</td>
+            </tr>
+            <tr>
+                <th>Excuse</th>
+                <td>{{ abscencee.excuse }}</td>
+            </tr>
+             <tr>
+                <th>list des etudiants</th>
+             <td> {% for etud in abscencee.etudiantts %}
+                <li>{{ etud.matricule }}</li>
+
+                {% endfor %} 						
+             </td>
+             </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_abscencee_index') }}">back to list</a>
+
+    <a href="{{ path('app_abscencee_edit', {'id': abscencee.id}) }}">edit</a>
+
+    {{ include('abscencee/_delete_form.html.twig') }}
+{% endblock %}

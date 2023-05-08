@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Etudiantt index{% endblock %}
+
+{% block body %}
+    <h1>Etudiantt index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Matricule</th>
+                <th>Cin</th>
+                <th>Nom</th>
+                <th>Classse</th>
+                <th>Dn</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for etudiantt in etudiantts %}
+            <tr>
+                <td>{{ etudiantt.id }}</td>
+                <td>{{ etudiantt.matricule }}</td>
+                <td>{{ etudiantt.cin }}</td>
+                <td>{{ etudiantt.nom }}</td>
+                <td>{{ etudiantt.classse }}</td>
+                <td>{{ etudiantt.dn ? etudiantt.dn|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_etudiantt_show', {'id': etudiantt.id}) }}">show</a>
+                    <a href="{{ path('app_etudiantt_edit', {'id': etudiantt.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_etudiantt_new') }}">Create new</a>
+{% endblock %}

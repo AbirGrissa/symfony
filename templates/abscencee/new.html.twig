@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Abscencee{% endblock %}
+
+{% block body %}
+    <h1>Create new Abscencee</h1>
+
+    {{ include('abscencee/_form.html.twig') }}
+
+    <a href="{{ path('app_abscencee_index') }}">back to list</a>
+{% endblock %}

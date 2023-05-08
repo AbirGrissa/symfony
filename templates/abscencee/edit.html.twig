@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Abscencee{% endblock %}
+
+{% block body %}
+    <h1>Edit Abscencee</h1>
+
+    {{ include('abscencee/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_abscencee_index') }}">back to list</a>
+
+    {{ include('abscencee/_delete_form.html.twig') }}
+{% endblock %}
